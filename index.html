@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encoding Is a Modeling Decision</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Encoding Is a Modeling Decision, Not a Preprocessing Checkbox</h1>
+      <p class="subtitle">
+        Matching categorical representation to variable structure in tabular machine learning
+      </p>
+      <div class="hero-buttons">
+        <a href="https://github.com/mah-trigui/encoding-is-a-modeling-decision" class="btn primary">View Repository</a>
+        <a href="#idea" class="btn secondary">Explore Method</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Overview</h2>
+        <p>
+          This project shows a simple but important principle in tabular machine learning: categorical encoding should be chosen according to the structure of the variable, not applied uniformly as boilerplate preprocessing.
+        </p>
+        <p>
+          Different variables carry different assumptions: some are ordered, some are binary contrasts, some are high-cardinality noisy groups, and some represent temporal or hardware structure.
+        </p>
+        <p>
+          The goal was not to use more encoding techniques. It was to let the model see each variable in a way that respects what the variable actually means.
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2>Architecture</h2>
+        <img src="images/architecture.jpg" alt="Encoding strategy by variable structure" class="architecture-image" />
+      </div>
+    </section>
+
+    <section class="section" id="idea">
+      <div class="container">
+        <h2>The Core Idea</h2>
+        <p>
+          Asking “what is the best encoding?” is often the wrong question.
+        </p>
+        <p>
+          A better question is:
+        </p>
+        <div class="metric-box">
+          <p><strong>What structure does this variable have, and which encoding preserves that structure best?</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2>Examples of structure-aware encoding</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Ordered categories</h3>
+            <p>
+              Use encodings that preserve rank or progression instead of pretending the levels are unrelated.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Binary contrast variables</h3>
+            <p>
+              Use encodings that capture directional separation rather than symmetric one-hot style expansion.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Noisy high-cardinality groups</h3>
+            <p>
+              Use shrinkage-aware encoders to avoid unstable category-level estimates.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Sequential / temporal categories</h3>
+            <p>
+              Use encodings that preserve progression rather than destroying sequence information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Why this matters</h2>
+        <ul class="clean-list">
+          <li>encoding choice is a modeling assumption, not just data preparation</li>
+          <li>different categorical variables contain different kinds of signal</li>
+          <li>uniform encoding can hide meaningful structure</li>
+          <li>small representation choices can improve model efficiency and interpretability</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2>Representation principle</h2>
+        <pre>
+Do not ask:
+  "Which encoding is best overall?"
+
+Ask:
+  "What is the structure of this variable,
+   and how should the model be allowed to see it?"
+        </pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Where this pattern generalizes</h2>
+        <ul class="clean-list">
+          <li>industrial tabular ML</li>
+          <li>risk scoring and operations analytics</li>
+          <li>telecom and sensor data</li>
+          <li>any mixed-type dataset with heterogeneous categorical variables</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2>Key Takeaway</h2>
+        <div class="metric-box">
+          <p><strong>Better tabular models often begin with better representation choices.</strong></p>
+          <p>
+            Encoding is part of how the model interprets the variable, so it should match the variable’s structure.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Built as a public project showcase for structure-aware categorical representation in machine learning.</p>
+    </div>
+  </footer>
+</body>
+</html>
